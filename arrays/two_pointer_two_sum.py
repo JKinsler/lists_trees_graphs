@@ -1,4 +1,10 @@
-"""Two sum array problem.
+"""
++++++++++++++++++++++++++++++++++++++++++
+Two sum array problem
+Technique practice: two pointer solution
+
+optimal solution
++++++++++++++++++++++++++++++++++++++++++
 
 Given a sorted array of integers return whether the sum of any two integers in the list
 is equal to 18.
