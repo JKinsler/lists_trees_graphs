@@ -13,7 +13,7 @@ class BinaryNode():
     def __repr__(self):
         """helpful print format."""
 
-        return "<Binary Tree | data: {data}".format(data = self.data)
+        return "<Binary Tree | data: {data}>".format(data = self.data)
 
     def insert(self, data):
         """Add a new node to a binary tree.
