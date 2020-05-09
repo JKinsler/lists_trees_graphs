@@ -7,6 +7,8 @@ Warm up challenge
 
 Optimal Solution
 +++++++++++++++++++++++++++++++++++++
+
+Sock Merchant
 """
 
 def sockMerchant(n, ar):
