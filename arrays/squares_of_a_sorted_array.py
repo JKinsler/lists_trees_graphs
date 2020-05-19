@@ -38,8 +38,8 @@ def sq_arr3(arr):
     """square all the values in a sorted array and return the values in 
     increasing order
 
-    Runtime complexity: O(n)
-    Space complexity: O(n)
+    Runtime complexity: O(n)*2 (best solution on LeetCode is O(n)*1)
+    Space complexity: O(n)*2
 
     Example:
     >>> sq_arr3([-1, 0, 3])
