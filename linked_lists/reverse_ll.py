@@ -3,17 +3,28 @@
 Linked list problem
 Technique practice: reverse a linked list
 
+This solution works, but it is a brute force method. The run time is long. 
+The solution should be simplified amd made faster. 
 +++++++++++++++++++++++++++++++++++
 
-reverse a linked list
+Problem statement: reverse a linked list
 
 Assumes that a Node class and a Linked List class is in place.
 
 pseudo code:"""
 
 import pdb # debugger
+import unittest
 
 def reverse_ll(ll):
+    """Reverse a linked list
+
+    For example:
+    > reverse_ll('a' --> 'b' --> 'c')
+    'c' --> 'b' --> 'a'
+    
+    Runtime complexity: (O)n^(n) approximate
+    """
 
     # pdb.set_trace()
     # create a new, empty linked list
@@ -24,41 +35,50 @@ def reverse_ll(ll):
         current = ll.head
 
     # move through ll 
-    while ll.head.next is not None:
+        while ll.head.next is not None:
 
-        # find the node before the tail
-        if current.next.next is None: 
+            # find the node before the tail
+            if current.next.next is None: 
 
-        # add the tail to new_ll
-            
-            if new_ll.head is not None: # create the first node in the new_ll
-                new_ll.tail.next = current.next
-                new_ll.tail = new_ll.tail.next
+            # add the tail to new_ll
+                
+                if new_ll.head is not None: # create the first node in the new_ll
+                    new_ll.tail.next = current.next
+                    new_ll.tail = new_ll.tail.next
 
-            else: # create the first node in the new_ll            
-               new_ll.head = current.next # use current instead of current.data because current is already a node
-               new_ll.tail = current.next 
+                else: # create the first node in the new_ll            
+                   new_ll.head = current.next # use current instead of current.data because current is already a node
+                   new_ll.tail = current.next 
 
-            # remove the value from the original linked list
-            current.next = None
+                # remove the value from the original linked list
+                current.next = None
 
-        # move through the linked list
-        if current.next is None:
-            if ll.head.next is None: 
-                break
-            else:
-                current = ll.head
+            # move through the linked list
+            if current.next is None:
+                if ll.head.next is None: 
+                    break
+                else:
+                    current = ll.head
 
-        while current.next.next is not None:
-            current = current.next
+            while current.next.next is not None:
+                current = current.next
 
     # add the final node to the new_ll
     if ll.head:
-        new_ll.tail.next = ll.head
-        new_ll.tail = new_ll.tail.next
+        if new_ll.head is not None: # added for addressing Linked Lists with a single node.
+            new_ll.tail.next = ll.head
+            new_ll.tail = new_ll.tail.next
+
+        else:
+            new_ll.head = ll.tail
+            new_ll.head.next = None
+            new_ll.tail = new_ll.head
+
 
     return new_ll
 
+# ideas for making this funciton faster
+# add a variable that keeps track of the node before the tail?
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # CODE TO WRITE TEST CASES
@@ -112,21 +132,55 @@ class LinkedList():
             current = current.next
 
 
+class TestReverseLL(unittest.TestCase):
+    """Test the reverse_ll function."""
+
+    def setUp(self):
+        """set up before each test case"""
+        
+        # create a linked list 'A' with nodes 'a' --> 'b' --> 'c' --> 'd'
+        self.A = LinkedList()
+        self.A.append('a')
+        self.A.append('b')
+        self.A.append('c')
+        self.A.append('d')
+
+        # create a linked list 'Empty' with no nodes
+        self.Empty = LinkedList()
+
+        # create a linked list 'Single' with one node
+        self.Single = LinkedList()
+        self.Single.append('one')
+
+
+    def test_reverse_ll_A(self):
+        """test case for reversing Linked List A."""
+
+        # reverse linked list A
+        new_ll = reverse_ll(self.A)
+
+        self.assertEqual(self.A.tail.data, new_ll.head.data)
+        self.assertEqual(self.A.head.data, new_ll.tail.data)
+
+
+    def test_reverse_ll_Empty(self):
+        """test case for reversing Empty Linked List."""
+
+        new_ll = reverse_ll(self.Empty)
+
+        self.assertEqual(self.Empty.tail, new_ll.head)
+        self.assertEqual(self.Empty.head, new_ll.tail)
+
+
+    def test_reverse_ll_Single(self):
+        """test case for reversing Single Linked List."""
+
+        new_ll = reverse_ll(self.Single)
+
+        self.assertEqual(self.Single.tail.data, new_ll.head.data)
+        self.assertEqual(self.Single.head.data, new_ll.tail.data)
+
+
 if __name__ == '__main__':
 
-    # create a linked list 'A' with nodes 'a' --> 'b' --> 'c' --> 'd'
-    A = LinkedList()
-
-    print(f'LinkedList A: {A}')
-
-    A.append('a')
-    A.append('b')
-    A.append('c')
-    A.append('d')
-
-    print('Nodes in LinkedList "A"')
-    A.print()
-
-    print('reverse LinkedList "A"')
-    D = reverse_ll(A)
-    D.print()
+    unittest.main()
