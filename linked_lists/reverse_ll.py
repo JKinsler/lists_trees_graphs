@@ -11,17 +11,31 @@ Problem statement: reverse a linked list
 
 Assumes that a Node class and a Linked List class is in place.
 
-pseudo code:"""
+Time and space efficient solution can be found here: https://www.geeksforgeeks.org/reverse-a-linked-list/
+
+"""
 
 import pdb # debugger
 import unittest
+
+
+
+"""a = LinkedListNode('a')
+b = LinkedListNode('b')
+c = LinkedListNode('c')
+
+A = LinkedList(a)
+A.append(b)"""
+
 
 def reverse_ll(ll):
     """Reverse a linked list
 
     For example:
-    > reverse_ll('a' --> 'b' --> 'c')
-    'c' --> 'b' --> 'a'
+    A = 'a' --> 'b' --> 'c'
+    > reverse_ll(A)
+    C
+    C = 'c' --> 'b' --> 'a'
     
     Runtime complexity: (O)n^(n) approximate
     """
@@ -77,8 +91,51 @@ def reverse_ll(ll):
 
     return new_ll
 
-# ideas for making this funciton faster
-# add a variable that keeps track of the node before the tail?
+# runtime for this solution is very poor: O(n^2)
+# # see alternative solutions for making this code faster
+
+
+# RECOMMENDED SOLUTIONS ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# def reverse_ll_efficient(ll):
+#     """Reverse a linked list."""
+
+#     #initiate pointers
+#     first = ll.head
+#     node = ll.head
+#     second = node.next
+
+
+#     # flip the direction of the pointers
+#     while first:
+
+#         #add node
+#         second.next = node
+#         node.next = None
+
+#         #increment first
+#         first = first.next
+#         node = first
+
+
+#     # move the head to the front of the linked list
+#     ll.head = second
+
+#     return ll
+
+# recursive method
+# def reverse_ll_recurse(ll):      
+#     """
+#     :type head: ListNode         
+#     :rtype: ListNode         
+#     """         
+          
+#     if not ll.head or not ll.head.next: # when node is none             
+#         return ll.head         
+#     p = ll.reverse2(head.next) #        
+#     ll.head.next.next = head #          
+#     ll.head.next = None #          
+#     return p
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # CODE TO WRITE TEST CASES
@@ -183,4 +240,14 @@ class TestReverseLL(unittest.TestCase):
 
 if __name__ == '__main__':
 
-    unittest.main()
+    # unittest.main()
+
+    # create nodes
+
+
+    # create linked list
+    A = LinkedList()
+    A.append('a')
+    A.append('b')
+    A.append('c')
+
