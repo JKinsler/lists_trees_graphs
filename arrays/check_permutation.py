@@ -30,6 +30,11 @@ def check_permutation(str1, str2):
 
     >>> check_permutation('a', 'a')
     True
+    
+    Developer comments:
+    - problem solving time: 5min
+    - runtime complexity = O(n) + O(m), because of converting the list to a set
+    - space complexity = O(n) + O(m), because of converting the list to a set
     """
 
     if set(str1) == set(str2):

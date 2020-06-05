@@ -28,12 +28,20 @@ def palindrome(phr):
 
     >>> palindrome('fact')
     False
+
+    >>> palindrome(' ')
+    True
+
+    >>> palindrome('')
+    True
+    
+
+    Developer notes:
+    - Time to solve: 15-20min
+    - Runtime complexity: O(n)
+    - Space complexity: O(n)
     """
 
-    """pseudo code
-    - count all the letters, save values and count in a dictionary
-
-    If all values are even, excepting one, then return True"""
 
     phr = phr.lower() # convert all characters in phr argument to lower case
 
