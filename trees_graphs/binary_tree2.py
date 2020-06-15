@@ -47,6 +47,43 @@ class binaryNode():
             return None
 
 
+    def insert_recur(self, data):
+        """recursive method for adding a node to a binary search tree"""
+
+        if data < self.data:
+            if self.left is None:
+                self.left =  binaryNode(data)
+            else:
+                self.left.insert_recur(data)
+
+        elif data > self.data:
+            if self.right is None:
+                self.right = binaryNode(data)
+            else:
+                self.right.insert_recur(data)
+
+        else:
+            self.data = data
+
+
+        # if data < self.data:
+        #     if self.left is None:
+        #         self.left = BinaryNode(data)
+
+        #     else: 
+        #         self.left.insert(data)
+
+        # elif data > self.data:
+        #     if self.right is None:
+        #         self.right = BinaryNode(data)
+
+        #     else:
+        #         self.right.insert(data)
+
+        # else:
+        #     self.data = data
+
+
 if __name__ == '__main__':
 
     root = binaryNode(10)
@@ -57,6 +94,13 @@ if __name__ == '__main__':
     root.insert_iter(12)
 
     print(root) # expect 10
-    # print(root.right) # expect 15
-    # print(root.left) # expect 5
+
+    root2 = binaryNode(10)
+    root2.insert_recur(5)
+    root2.insert_recur(15)
+    root2.insert_recur(8)
+    root2.insert_recur(12)
+
+    print(root2) # expect 10
+
 
